@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Software Developer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: black;
+            color: white;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        .content {
+            position: absolute;
+            top: 65%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 10px auto;
+            display: block;
+        }
+
+        @media (min-width: 640px) {
+            .content {
+                left: 20%;
+                transform: translate(-50%, -50%);
+                width: auto;
+                top: 50%;
+            }
+
+            .profile-img {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        .heading {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .skills,
+        .projects,
+        .feedback,
+        .contact {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bgCanvas"></canvas>
+    <div class="content">
+        <img src="/img/me.png" alt="Profile Photo" class="profile-img">
+        <h1 class="heading">Hi, I'm a Software Developer</h1>
+        <p class="text-gray-300">Freelance Developer | WebRTC | React | DevOps | IoT | AWS</p>
+
+        <div class="about mt-6">
+            <h2 class="text-xl font-bold">About Me</h2>
+            <p class="text-gray-400"></p>
+        </div>
+
+        <div class="skills">
+            <h2 class="text-xl font-bold">Skills</h2>
+            <span class="bg-gray-800 px-3 py-1 rounded-lg">JavaScript</span>
+            <span class="bg-gray-800 px-3 py-1 rounded-lg">React.js</span>
+            <span class="bg-gray-800 px-3 py-1 rounded-lg">Python</span>
+            <span class="bg-gray-800 px-3 py-1 rounded-lg">MongoDB</span>
+            <span class="bg-gray-800 px-3 py-1 rounded-lg">C++</span>
+        </div>
+
+        <div class="projects">
+            <h2 class="text-xl font-bold">Project Showcase</h2>
+            <p class="text-gray-400"> Coming soon! </p>
+        </div>
+
+        <div class="feedback">
+            <!-- <h2 class="text-xl font-bold">Client Feedback</h2>
+            <p class="text-gray-400">"Great work, very professional!" - Client 1</p>
+            <p class="text-gray-400">"Highly skilled and delivered on time!" - Client 2</p> -->
+        </div>
+
+        <div class="contact">
+            <h2 class="text-xl font-bold">Contact Me</h2>
+            <p class="text-gray-400">Email: tarikulislam4145@gmail.com</p>
+            <p class="text-gray-400">LinkedIn: https://www.linkedin.com/in/tarikul-dev/</p>
+            <p class="text-gray-400">GitHub: github.com/tarikulislam36</p>
+        </div>
+    </div>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas') });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.SphereGeometry(1, 32, 32);
+        const material = new THREE.MeshStandardMaterial({ color: 0x00ffcc, wireframe: true });
+        const sphere = new THREE.Mesh(geometry, material);
+        scene.add(sphere);
+
+        const light = new THREE.PointLight(0xffffff, 1, 100);
+        light.position.set(2, 2, 5);
+        scene.add(light);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            sphere.rotation.x += 0.01;
+            sphere.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+
+</html>
