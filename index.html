@@ -3,140 +3,268 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Software Developer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: black;
-            color: white;
+        /* Optional: Add custom scrollbar */
+        .scrollbar-thin::-webkit-scrollbar {
+            height: 6px;
         }
 
-        canvas {
-            display: block;
-        }
-
-        .content {
-            position: absolute;
-            top: 65%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            width: 90%;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 10px auto;
-            display: block;
-        }
-
-        @media (min-width: 640px) {
-            .content {
-                left: 20%;
-                transform: translate(-50%, -50%);
-                width: auto;
-                top: 50%;
-            }
-
-            .profile-img {
-                width: 300px;
-                height: 300px;
-            }
-        }
-
-        .heading {
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        .skills,
-        .projects,
-        .feedback,
-        .contact {
-            margin-top: 1rem;
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+            background: #a0aec0;
+            border-radius: 3px;
         }
     </style>
 </head>
 
-<body>
-    <canvas id="bgCanvas"></canvas>
-    <div class="content">
-        <img src="/img/me.png" alt="Profile Photo" class="profile-img">
-        <h1 class="heading">Hi, I'm a Software Developer</h1>
-        <p class="text-gray-300">Freelance Developer | WebRTC | React | DevOps | IoT | AWS</p>
+<body class="bg-slate-950 p-5 ">
 
-        <div class="about mt-6">
-            <h2 class="text-xl font-bold">About Me</h2>
-            <p class="text-gray-400"></p>
-        </div>
-
-        <div class="skills">
-            <h2 class="text-xl font-bold">Skills</h2>
-            <span class="bg-gray-800 px-3 py-1 rounded-lg">JavaScript</span>
-            <span class="bg-gray-800 px-3 py-1 rounded-lg">React.js</span>
-            <span class="bg-gray-800 px-3 py-1 rounded-lg">Python</span>
-            <span class="bg-gray-800 px-3 py-1 rounded-lg">MongoDB</span>
-            <span class="bg-gray-800 px-3 py-1 rounded-lg">C++</span>
-        </div>
-
-        <div class="projects">
-            <h2 class="text-xl font-bold">Project Showcase</h2>
-            <p class="text-gray-400"> Coming soon! </p>
-        </div>
-
-        <div class="feedback">
-            <!-- <h2 class="text-xl font-bold">Client Feedback</h2>
-            <p class="text-gray-400">"Great work, very professional!" - Client 1</p>
-            <p class="text-gray-400">"Highly skilled and delivered on time!" - Client 2</p> -->
-        </div>
-
-        <div class="contact">
-            <h2 class="text-xl font-bold">Contact Me</h2>
-            <p class="text-gray-400">Email: tarikulislam4145@gmail.com</p>
-            <p class="text-gray-400">LinkedIn: https://www.linkedin.com/in/tarikul-dev/</p>
-            <p class="text-gray-400">GitHub: github.com/tarikulislam36</p>
+    <div class="p-5 bg-indigo-950 max-w-screen-xl mx-auto">
+        <!-- Header Section -->
+        <div class="max-w-screen-xl mx-auto px-4 py-8 bg-white shadow-md rounded-md">
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+                <!-- About Me Section -->
+                <div class="w-full md:w-2/3">
+                    <h2 class="font-bold text-lg mb-2">About Me</h2>
+                    <div class="flex flex-col sm:flex-row items-start">
+                        <img src="img/me.png" alt="Profile Image"
+                            class="rounded-full w-24 h-24 sm:w-32 sm:h-32 object-cover mr-4 mb-4 sm:mb-0" />
+                        <p class="text-gray-700 text-justify">
+                            Hi, <b>I'm Tarikul Islam</b>, a Computer Science graduate and passionate tech enthusiast
+                            with a
+                            strong foundation in Data Structures & Algorithms, System Design, and IoT. I believe in
+                            building innovative, ethical, and impactful technology — solutions that benefit not just
+                            users, but all of humanity.
+                            <br><br>
+                            I'm a firm believer in learning by building, and I’m always engaged in research,
+                            experimentation, and projects that challenge the status quo. From crafting scalable system
+                            architectures to automating with IoT devices and robotics, I enjoy turning ideas into real,
+                            working systems.
+                        </p>
+                    </div>
+                </div>
+                <!-- Video Section -->
+                <div class="w-full md:w-1/3 flex items-center justify-center mt-6 md:mt-0">
+                    <div
+                        class="bg-gray-300 w-60 h-60 flex items-center justify-center font-bold text-black rounded-lg overflow-hidden">
+                        <video autoplay loop muted class="rounded-lg w-full h-full object-cover">
+                            <source src="img/myv.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <script>
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas') });
-        renderer.setSize(window.innerWidth, window.innerHeight);
 
-        const geometry = new THREE.SphereGeometry(1, 32, 32);
-        const material = new THREE.MeshStandardMaterial({ color: 0x00ffcc, wireframe: true });
-        const sphere = new THREE.Mesh(geometry, material);
-        scene.add(sphere);
+    <!-- Feedback Section -->
+    <section class="mt-10 px-4 py-8 bg-white rounded-md max-w-screen-xl mx-auto">
+        <h2 class="text-2xl font-bold mb-6 text-center">Testimonials</h2>
+        <div class="flex overflow-x-auto space-x-6 px-2 scrollbar-thin justify-start md:justify-center">
+            <!-- Feedback Card -->
+            <div class="min-w-[300px] bg-gray-100 rounded-xl shadow p-4 flex-shrink-0 text-center">
+                <div
+                    class="w-16 h-16 rounded-full bg-green-400 text-white font-bold flex items-center justify-center mx-auto mb-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+                </div>
+                <p class="text-sm font-semibold">Mike</p>
+                <p class="text-xs text-gray-500 mb-2">Ukraine</p>
+                <!-- start rating -->
+                <div class="flex justify-center mb-2 space-x-1">
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <polygon
+                            points="10,1.5 12.59,7.36 18.9,7.97 14,12.14 15.18,18.36 10,15.27 4.82,18.36 6,12.14 1.1,7.97 7.41,7.36" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <polygon
+                            points="10,1.5 12.59,7.36 18.9,7.97 14,12.14 15.18,18.36 10,15.27 4.82,18.36 6,12.14 1.1,7.97 7.41,7.36" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <polygon
+                            points="10,1.5 12.59,7.36 18.9,7.97 14,12.14 15.18,18.36 10,15.27 4.82,18.36 6,12.14 1.1,7.97 7.41,7.36" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <polygon
+                            points="10,1.5 12.59,7.36 18.9,7.97 14,12.14 15.18,18.36 10,15.27 4.82,18.36 6,12.14 1.1,7.97 7.41,7.36" />
+                    </svg>
+                    <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                        <polygon
+                            points="10,1.5 12.59,7.36 18.9,7.97 14,12.14 15.18,18.36 10,15.27 4.82,18.36 6,12.14 1.1,7.97 7.41,7.36" />
+                    </svg>
+                </div>
+                <!-- end rating system -->
+                <p class="text-sm text-gray-700">Good and clean code, with some minor issues, <br>
+                    which has been solved.
+                    Good support.</p>
+            </div>
 
-        const light = new THREE.PointLight(0xffffff, 1, 100);
-        light.position.set(2, 2, 5);
-        scene.add(light);
+            <!-- Repeat -->
+            <div class="min-w-[300px] bg-gray-100 rounded-xl shadow p-4 flex-shrink-0 text-center">
+                <div
+                    class="w-16 h-16 rounded-full bg-green-400 text-white font-bold flex items-center justify-center mx-auto mb-2">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="">
+                </div>
+                <p class="text-sm font-semibold">Sash</p>
+                <p class="text-xs text-gray-500 mb-2">Singapore</p>
+                <!-- start rating -->
+                <div class="flex justify-center mb-2 space-x-1">
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <polygon
+                            points="10,1.5 12.59,7.36 18.9,7.97 14,12.14 15.18,18.36 10,15.27 4.82,18.36 6,12.14 1.1,7.97 7.41,7.36" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <polygon
+                            points="10,1.5 12.59,7.36 18.9,7.97 14,12.14 15.18,18.36 10,15.27 4.82,18.36 6,12.14 1.1,7.97 7.41,7.36" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <polygon
+                            points="10,1.5 12.59,7.36 18.9,7.97 14,12.14 15.18,18.36 10,15.27 4.82,18.36 6,12.14 1.1,7.97 7.41,7.36" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <polygon
+                            points="10,1.5 12.59,7.36 18.9,7.97 14,12.14 15.18,18.36 10,15.27 4.82,18.36 6,12.14 1.1,7.97 7.41,7.36" />
+                    </svg>
+                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                        <polygon
+                            points="10,1.5 12.59,7.36 18.9,7.97 14,12.14 15.18,18.36 10,15.27 4.82,18.36 6,12.14 1.1,7.97 7.41,7.36" />
+                    </svg>
+                </div>
+                <!-- end rating system -->
+                <p class="text-sm text-gray-700">Tarikul is very diligent and proactive. <br> I thoroughly recommend
+                    him.</p>
+            </div>
+        </div>
+    </section>
+    <!-- 
+            <div class="min-w-[300px] bg-gray-100 rounded-xl shadow p-4 flex-shrink-0 text-center">
+                <div
+                    class="w-16 h-16 rounded-full bg-green-400 text-white font-bold flex items-center justify-center mx-auto mb-2">
+                    IMG</div>
+                <p class="text-sm font-semibold">Name</p>
+                <p class="text-xs text-gray-500 mb-2">USA</p>
+                <p class="text-sm text-gray-700">Feedback text here....</p>
 
-        camera.position.z = 5;
+            </div>
+            <div class="min-w-[300px] bg-gray-100 rounded-xl shadow p-4 flex-shrink-0 text-center">
+                <div
+                    class="w-16 h-16 rounded-full bg-green-400 text-white font-bold flex items-center justify-center mx-auto mb-2">
+                    IMG</div>
+                <p class="text-sm font-semibold">Name</p>
+                <p class="text-xs text-gray-500 mb-2">USA</p>
+                <p class="text-sm text-gray-700">Feedback text here....</p>
 
-        function animate() {
-            requestAnimationFrame(animate);
-            sphere.rotation.x += 0.01;
-            sphere.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        }
-        animate();
+            </div>
+            <div class="min-w-[300px] bg-gray-100 rounded-xl shadow p-4 flex-shrink-0 text-center">
+                <div
+                    class="w-16 h-16 rounded-full bg-green-400 text-white font-bold flex items-center justify-center mx-auto mb-2">
+                    IMG</div>
+                <p class="text-sm font-semibold">Name</p>
+                <p class="text-xs text-gray-500 mb-2">USA</p>
+                <p class="text-sm text-gray-700">Feedback text here....</p> -->
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
+    </div>
+    </div>
+    </section>
+
+    <!-- Bottom Grid Sections -->
+    <div class="mt-10 px-4 max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div
+            class="hidden md:flex bg-gray-200 h-40 rounded-md shadow-md items-center justify-center text-lg font-semibold">
+
+            <div class="flex flex-col items-center justify-center w-full h-full">
+                <span class="text-lg font-bold mb-2"> A Video</span>
+                <span class="text-sm text-gray-500 italic mt-2 flex items-center">
+                    <svg class="w-4 h-4 mr-1 animate-spin text-indigo-600" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                    </svg>
+                    Updating soon...
+                </span>
+            </div>
+        </div>
+        <div
+            class="hidden md:flex bg-gray-200 h-40 rounded-md shadow-md items-center justify-center text-lg font-semibold">
+            <div class="flex flex-col items-center justify-center w-full h-full">
+                <span class="text-lg font-bold mb-2">Project List</span>
+                <span class="text-sm text-gray-500 italic mt-2 flex items-center">
+                    <svg class="w-4 h-4 mr-1 animate-spin text-indigo-600" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                    </svg>
+                    Updating soon...
+                </span>
+            </div>
+        </div>
+        <div class="bg-gray-200 h-40 rounded-md shadow-md flex items-center justify-center text-lg font-semibold">
+            <!-- Publication link and small descreption -->
+
+            <div class="flex flex-col items-center justify-center w-full h-full">
+                <h3 class="text-lg font-bold mb-2">Publications & Articles</h3>
+                <ul class="space-y-1 text-blue-700 text-sm text-center">
+
+                    <li>
+                        <a href="https://medium.com/@tarikulislam4145/how-to-build-a-video-calling-app-using-expo-and-webrtc-the-simplest-way-79de22494e61"
+                            target="_blank" class="hover:underline font-medium">
+                            How to Build a Video Calling App Using Expo and WebRTC (The Simplest Way) <span
+                                class="text-gray-500">(Medium, 2025)</span>
+                        </a>
+                    </li>
+
+                </ul>
+                <p class="mt-2 text-xs text-gray-600">Explore my research and writing on technology, systems, and
+                    innovation.</p>
+            </div>
+
+        </div>
+        <div
+            class="bg-gray-200 h-40 rounded-md shadow-md flex items-center justify-center text-lg font-semibold text-center">
+            <div class="flex flex-col items-center justify-center w-full h-full">
+                <h3 class="text-lg font-bold mb-2">Entrepreneurship & Start-Up</h3>
+                <img src="img/W3net.live.gif" alt="Start-Up Logo"
+                    class="w-auto h-20 mb-3 rounded-full shadow-lg object-cover">
+                <p class="text-sm text-gray-700">Founder of <span
+                        class="font-semibold text-indigo-700">W3net.live</span> — building AI and real-time
+                    communication-based products to make communication practice easier.</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <canvas id="bgCanvas"></canvas>
+    </div>
+    <footer class="mt-10 bg-indigo-950 text-white py-6">
+        <div class="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
+            <div class="mb-4 md:mb-0 text-center md:text-left">
+                &copy; 2025 Tarikul Islam. All rights reserved.
+            </div>
+            <div class="flex space-x-4 justify-center">
+                <a href="https://github.com/tarikulislam36" target="_blank" class="hover:text-indigo-300 transition">
+                    <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.41-5.27 5.7.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5z" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/tarikul-dev/" target="_blank"
+                    class="hover:text-indigo-300 transition">
+                    <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.36h.04c.4-.76 1.38-1.56 2.85-1.56 3.05 0 3.61 2.01 3.61 4.62v5.58z" />
+                    </svg>
+                </a>
+                <a href="mailto:tarikulislam4145@gmail.com" class="hover:text-indigo-300 transition">
+                    <svg class="w-6 h-6 inline" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm-16 12V8.99l7.88 6.99c.39.34.98.34 1.36 0L20 8.99V18H4z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>
